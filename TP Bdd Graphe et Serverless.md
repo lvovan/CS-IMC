@@ -135,6 +135,7 @@ Pour supprimer des noeuds, utilisez le statement `DELETE`.
 ## Export des données vers un modèle graphe
 **⚠️Note:** Il est fortement conseillé de réaliser cette partie du TP sur une machine Linux ou Mac.
 1. Téléchargez les fichiers [export-neo4j.py](TP-Bdd-src/export-neo4j.py) et [requirements.txt](TP-Bdd-src/requirements.txt) dans un dossier local. Il contient le code (Python) nécessaire à l'exécution de l'export, mais pas la logique de transformation des données. Si l'installation des dépendances déclarées dans [requirements.txt](TP-Bdd-src/requirements.txt) vous posent problème, essayez les commandes suivantes:
+
         ```
         sudo apt install unixodbc-dev
         sudo -H pip3 install pyodbc
