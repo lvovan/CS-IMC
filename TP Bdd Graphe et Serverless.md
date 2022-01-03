@@ -41,7 +41,7 @@ Dans ce TP, nous allons travailler sur des jeux de données publics issus des [d
 
 **Exercice 6**: Trouvez les artistes ayant eu plusieurs responsabilités au cours de leur carrière (acteur, directeur, producteur...).
 
-**Exercice 7**: Trouver le nom du ou des film(s) ayant le plus d'acteurs.
+**Exercice 7**: Trouver le nom du ou des film(s) ayant le plus d'acteurs (i.e. uniquement *acted in*).
 
 **Exercice 8**: Montrez les artistes ayant eu plusieurs responsabilités dans un même film (ex: à la fois acteur et directeur, ou toute autre combinaison) et les titres de ces films.
 
