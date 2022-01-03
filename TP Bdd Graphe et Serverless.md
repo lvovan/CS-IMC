@@ -145,7 +145,7 @@ Pour supprimer des noeuds, utilisez le statement `DELETE`.
 3. (recommandé) Créez un environnement virtuel Python dans votre dossier local
 4. Installez **pyodbc**:  `sudo -H pip install pyodbc`
 5. Installez les autres prérequis: `pip install -r requirements.txt`
-6. Préparez un script qui initialise les variables d'environnement indiquées au début du fichier [export-neo4j](TP-Bdd-src/export-neo4j.py) (`TPBDD_SERVER`, `TPBDD_DB`, etc.) avec les informations de connexion récupérées dans la section précédente.
+6. Préparez un script qui initialise les variables d'environnement indiquées au début du fichier [export-neo4j](TP-Bdd-src/export-neo4j.py) (`TPBDD_SERVER`, `TPBDD_DB`, etc.) avec les informations de connexion récupérées dans la section précédente. Pour la variable `TPBDD_NEO4J_SERVER`, il s'agit de l'URL commençant par `bolt://` 
 7. Complétez le programme aux endroits notés `A COMPLETER`. N'hésitez pas à déboguer en ajoutant des `print`, créer des programmes de test etc.
 8. Effectuez l'export vers votre base Neo4j Sandbox
 
