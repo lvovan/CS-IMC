@@ -35,7 +35,7 @@ Dans ce TP, nous allons travailler sur des jeux de données publics issus des [d
 
 **Exercice 3**: Trouvez les noms des artistes nés en `1960`, affichez ensuite leur nombre.
 
-**Exercice 4**: Trouvez l'année de naissance la plus représentée parmi les acteurs, et combien d'acteurs sont nés cette année là.
+**Exercice 4**: Trouvez l'année de naissance la plus représentée parmi les acteurs (sauf 0!), et combien d'acteurs sont nés cette année là.
 
 **Exercice 5**: Trouvez les artistes ayant joué dans plus d'un film
 
