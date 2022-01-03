@@ -133,13 +133,20 @@ RETURN n
 Pour supprimer des noeuds, utilisez le statement `DELETE`.
 
 ## Export des données vers un modèle graphe
-1. Téléchargez les fichiers [export-neo4j.py](TP-Bdd-src/export-neo4j.py) et [requirements.txt](TP-Bdd-src/requirements.txt) dans un dossier local. Il contient le code (Python) nécessaire à l'exécution de l'export, mais pas la logique de transformation des données.
-2. (recommandé) Créez un environnement virtuel Python dans votre dossier local
-3. Installez **pyodbc**:  `sudo -H pip install pyodbc`
-4. Installez les autres prérequis: `pip install -r requirements.txt`
-5. Préparez un script qui initialise les variables d'environnement indiquées au début du fichier [export-neo4j](TP-Bdd-src/export-neo4j.py) (`TPBDD_SERVER`, `TPBDD_DB`, etc.) avec les informations de connexion récupérées dans la section précédente.
-6. Complétez le programme aux endroits notés `A COMPLETER`. N'hésitez pas à déboguer en ajoutant des `print`, créer des programmes de test etc.
-7. Effectuez l'export vers votre base Neo4j Sandbox
+**⚠️Note:** Il est fortement conseillé de réaliser cette partie du TP sur une machine Linux ou Mac.
+1. Téléchargez les fichiers [export-neo4j.py](TP-Bdd-src/export-neo4j.py) et [requirements.txt](TP-Bdd-src/requirements.txt) dans un dossier local. Il contient le code (Python) nécessaire à l'exécution de l'export, mais pas la logique de transformation des données. Si l'installation des dépendances déclarées dans [requirements.txt](TP-Bdd-src/requirements.txt) vous posent problème, essayez les commandes suivantes:
+        ```
+        sudo apt install unixodbc-dev
+        sudo -H pip3 install pyodbc
+        pip3 install py2neo
+        ```
+
+3. (recommandé) Créez un environnement virtuel Python dans votre dossier local
+4. Installez **pyodbc**:  `sudo -H pip install pyodbc`
+5. Installez les autres prérequis: `pip install -r requirements.txt`
+6. Préparez un script qui initialise les variables d'environnement indiquées au début du fichier [export-neo4j](TP-Bdd-src/export-neo4j.py) (`TPBDD_SERVER`, `TPBDD_DB`, etc.) avec les informations de connexion récupérées dans la section précédente.
+7. Complétez le programme aux endroits notés `A COMPLETER`. N'hésitez pas à déboguer en ajoutant des `print`, créer des programmes de test etc.
+8. Effectuez l'export vers votre base Neo4j Sandbox
 
 ## Requêtes graphe (Cypher)
 **Exercice 1**: Ajoutez une personne ayant votre prénom et votre nom dans le graphe. Verifiez qui le noeud a bien éte crée. 
