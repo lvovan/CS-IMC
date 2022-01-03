@@ -96,7 +96,7 @@ query = ("CREATE (Bob:Person { name: 'Bob' }) "
 Nous pouvons aussi lier les noeuds par des relations, comme par exemple en indiquant que `Bob` et `Alice` se connaissent:
 
 ```
-CREATE (Alice)-[k:KNOWS { from: $knows_from }]->(Bob)
+CREATE (Alice)-[k:KNOWS]->(Bob)
 ```
 
 #### Création de relations
