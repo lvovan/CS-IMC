@@ -96,7 +96,12 @@ query = ("CREATE (Bob:Person { name: 'Bob' }) "
 Nous pouvons aussi lier les noeuds par des relations, comme par exemple en indiquant que `Bob` et `Alice` se connaissent:
 
 ```
-CREATE (Alice)-[k:KNOWS]->(Bob)
+MATCH
+  (a:Person),
+  (b:Person)
+WHERE a.name = 'Alice' AND b.name = 'Bob'
+CREATE (a)-[r:RELTYPE]->(b)
+RETURN type(r)
 ```
 
 #### Création de relations
