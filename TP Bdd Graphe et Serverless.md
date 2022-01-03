@@ -52,6 +52,12 @@ Neo4j est une base de données graphe. Les données sont représentées par des 
 3. Les *propriétés* sont des paires clé-valeur pouvant être associées à des nœuds ou des relations
 4. Les relations ont des *directions*: unidirectionnelles et bidirectionnelles
 
+### Création d'une base de données Neo4j
+Pour la suite du TP, nous aurons besoin de créer une base de données Neo4j en mode "bac à sable" (Sandbox). Pour cela:
+1. Créez une base de données  [Neo4j Sandbox](https://neo4j.com/sandbox/). Utilisez les informations que vous souhaitez pour la création de compte.
+2. Dans le portail Neo4j (un lien vous a été envoyé par email), dépliez la ligne correspondant à votre sandbox puis allez dans l'onglet **Connection details** pour noter ces informations de connexion qui vous seront utiles ultérieurement.
+![image](https://user-images.githubusercontent.com/22498922/147907013-ae0f0d32-7982-464b-969a-576646407c9c.png)
+
 ### Cypher 
 Le langage de requêtage utilisé par Neo4j est [Cypher](https://neo4j.com/developer/cypher/). Vous trouverez sa [documentation officielle](https://neo4j.com/docs/cypher-refcard/current/) sur le site de Neo4j.
 
@@ -73,13 +79,6 @@ Les patterns sont utilisés pour le requêtage et visent à surtout réprésente
 3. `(a)-[r:REL_TYPE]->(b) `
 4. `(a)-[:REL_TYPE]->(b) `
 5. `(a)-[*]->(b)`
-
-### Création d'une base de données Neo4j
-Pour la suite du TP, nous aurons besoin de créer une base de données Neo4j en mode "bac à sable" (Sandbox). Pour cela:
-1. Créez une base de données  [Neo4j Sandbox](https://neo4j.com/sandbox/). Utilisez les informations que vous souhaitez pour la création de compte.
-2. Dans le portail Neo4j (un lien vous a été envoyé par email), dépliez la ligne correspondant à votre sandbox puis allez dans l'onglet **Connection details** pour noter ces informations de connexion qui vous seront utiles ultérieurement.
-![image](https://user-images.githubusercontent.com/22498922/147907013-ae0f0d32-7982-464b-969a-576646407c9c.png)
-
 
 #### Création de noeuds
 Le statement `CREATE` nous permet de créer des noeuds selon la structure suivante :  
