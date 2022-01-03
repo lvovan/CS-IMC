@@ -147,7 +147,7 @@ Pour supprimer des noeuds, utilisez le statement `DELETE`.
         pip3 install py2neo
 ```
 
-    Si des problèmes avec **pyodbc** subsistent, suivez [ces instructions](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15).
+Si des problèmes avec **pyodbc** subsistent, suivez [ces instructions](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15).
 
 3. (recommandé) Créez un environnement virtuel Python dans votre dossier local
 4. Installez **pyodbc**:  `sudo -H pip install pyodbc`
