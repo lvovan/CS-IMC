@@ -89,8 +89,8 @@ CREATE (nodePseudoVariable:nodeLabel { nodePropertyName: nodePropertyValue, .. }
 
 Supposons que nous voulions créer deux noeuds: `Alice` et `Bob` de type `Person` avec la propriéte `name`, les requêtes seraient les suivantes: 
 ```
-query = ("CREATE (Alice:Person { name: ''Alice'' }) "
-query = ("CREATE (Bob:Person { name: ''Bob'' }) "
+query = ("CREATE (Alice:Person { name: 'Alice' }) "
+query = ("CREATE (Bob:Person { name: 'Bob' }) "
 ```
 
 Nous pouvons aussi lier les noeuds par des relations, comme par exemple en indiquant que `Bob` et `Alice` se connaissent:
