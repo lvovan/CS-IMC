@@ -1,12 +1,13 @@
 # Travaux Pratiques Bases de Données Graphe et Serverless
-Dans ce TP, nous allons travailler sur des jeux de données publiques concernant des films (issues des [datasets IMDB](https://datasets.imdbws.com/)). Au démarrage du TP, ceux-ci sont disponibles dans une base de données relationelle [Azure SQL Database](https://docs.microsoft.com/fr-fr/azure/azure-sql/database/sql-database-paas-overview). L'objectif de ce TP est le suivant:
+Dans ce TP, nous allons travailler sur des jeux de données publics issus des [datasets IMDB](https://datasets.imdbws.com/)). Au démarrage du TP, ceux-ci sont disponibles dans une base de données relationelle [Azure SQL Database](https://docs.microsoft.com/fr-fr/azure/azure-sql/database/sql-database-paas-overview). Les objectifs du TP sont les suivants:
 
-1. Transformer les données pour les exporter vers une base de données graphe Neo4j
-2. Implémenter les mêmes requêtes:
+1. Se familiariser avec les différences de paradigme entre le requêtage relationnel et graphe
+2. Transformer les données pour les exporter vers une base de données graphe Neo4j
+3. Implémenter les mêmes requêtes:
     - en SQL sur la base de donnée relationelle [Azure SQL Database](https://docs.microsoft.com/fr-fr/azure/azure-sql/database/sql-database-paas-overview)
     - en [Cypher](https://neo4j.com/developer/cypher/) sur la base de données graphe [Neo4j](https://neo4j.com/)
     - en [Apache Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps) sur une base de données graphe [Cosmos Db](https://docs.microsoft.com/en-us/azure/cosmos-db/graph/graph-introduction)
-3. (optionnel) Encapsuler ces requêtes dans des API serverless (Azure Functions) et mesurer les performances
+4. (optionnel) Encapsuler ces requêtes dans des API serverless (Azure Functions) et mesurer les performances
 
 ## Création et connexion aux bases de données
 **⚠️Note:** Il est fortement conseillé de passer l'interface en **anglais** afin de suivre plus facilement les instructions du TP.
@@ -16,8 +17,12 @@ Dans ce TP, nous allons travailler sur des jeux de données publiques concernant
 2. Autorisez votre adresse IP dans le firewall du serveur SQL, ce qui vous permettra d'effectuer vos requêtes depuis votre ordinateur:
 
     1. Cliquez sur **Set server firewall**
-    2. Puis sur **+ Add client IP**, ce qui ajoute votre IP à la liste existante
-    3. Puis sur **Save** pour appliquer l'ajout
+
+        ![image](https://user-images.githubusercontent.com/22498922/147907059-5ec9d710-461c-4354-8527-182bc2d70c02.png)
+    3. Puis sur **+ Add client IP**, ce qui ajoute votre IP à la liste existante
+
+        ![image](https://user-images.githubusercontent.com/22498922/147907042-632dde1f-6e4b-4554-87f2-8866840ea8c0.png)
+    5. Puis sur **Save** pour appliquer l'ajout
 
 3. Connectez-vous à la base de données via l'onglet *Query editor)* à gauche, ou en récupérant les informations de connexion dans l'onglet **Connection strings** et en réutilisant ces informations dans Azure Data Studio.
 
@@ -74,6 +79,8 @@ Les patterns sont utilisés pour le requêtage et visent à surtout réprésente
 Pour la suite du TP, nous aurons besoin de créer une base de données Neo4j en mode "bac à sable". Pour cela:
 1. Créez une base de données  [Neo4j Sandbox](https://neo4j.com/sandbox/). Utilisez les informations que vous souhaitez pour la création de compte.
 2. Dans le portail Neo4j (un lien vous a été envoyé par email), dépliez la ligne correspondant à votre sandbox puis allez dans l'onglet **Connection details** pour noter ces informations de connexion qui vous seront utiles ultérieurement.
+![image](https://user-images.githubusercontent.com/22498922/147907013-ae0f0d32-7982-464b-969a-576646407c9c.png)
+
 
 #### Création de noeuds
 Le statement `CREATE` nous permet de créer des noeuds selon la structure suivante :  
