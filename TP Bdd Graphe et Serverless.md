@@ -152,7 +152,7 @@ Pour supprimer des noeuds, utilisez le statement `DELETE`.
 Si des problèmes avec **pyodbc** subsistent, suivez [ces instructions](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15).
 
 4. Préparez un script qui initialise les variables d'environnement indiquées au début du fichier [export-neo4j](TP-Bdd-src/export-neo4j.py) (`TPBDD_SERVER`, `TPBDD_DB`, etc.) avec les informations de connexion récupérées dans la section précédente. Pour la variable `TPBDD_NEO4J_SERVER`, il s'agit de l'URL commençant par `bolt://` 
-5. Complétez le programme aux endroits notés `A COMPLETER`. N'hésitez pas à déboguer en ajoutant des `print`, créer des programmes de test etc.
+5. Complétez le programme aux endroits notés `A COMPLETER`. N'hésitez pas à déboguer en ajoutant des `print`, créer des programmes de test etc. Utilisez les fonctions [`create_nodes` et `create_relationships`](https://py2neo.org/2021.0/bulk/index.html) de **py2neo**.
 6. Effectuez l'export vers votre base Neo4j Sandbox
 
 ## Requêtes graphe (Cypher)
