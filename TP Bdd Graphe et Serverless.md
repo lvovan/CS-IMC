@@ -105,20 +105,20 @@ Le statement `MATCH` permet également de créer des relations entre des noeuds 
 MATCH (a:NodeLabel),(b:NodeLabel)
 WHERE .....
 CREATE (a)-[r:RELTYPE]->(b)
-RETURN type(r)`
+RETURN type(r)
 ```
 
 Pour sélectionner tous les noeuds, utilisez la requête suivante:
 ```
 MATCH ( n ) 
-RETURN n`
+RETURN n
 ```
 
 Autre exemple, pour sélectionner tous les noeuds disposant de la propriété `label`
 
 ```
 MATCH (n:label) 
-RETURN n`
+RETURN n
 ```
 
 Pour affiner encore d'avantage, voici comment sélectionner tous les noeuds ayant une propriété `label` dont la valeur vaut `value` :
