@@ -100,7 +100,7 @@ MATCH
   (a:Person),
   (b:Person)
 WHERE a.name = 'Alice' AND b.name = 'Bob'
-CREATE (a)-[r:RELTYPE]->(b)
+CREATE (a)-[r:KNOWS]->(b)
 RETURN type(r)
 ```
 
