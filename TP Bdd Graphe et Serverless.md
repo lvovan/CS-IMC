@@ -136,11 +136,13 @@ Pour supprimer des noeuds, utilisez le statement `DELETE`.
 **⚠️Note:** Il est fortement conseillé de réaliser cette partie du TP sur une machine Linux ou Mac.
 1. Téléchargez les fichiers [export-neo4j.py](TP-Bdd-src/export-neo4j.py) dans un dossier local. Il contient le code (Python) nécessaire à l'exécution de l'export, mais pas la logique de transformation des données. Installez les dépendance (**pyodbc** et **py2neo**) avec les commandes suivantes:
 
-        ```
+```
         sudo apt install unixodbc-dev
         sudo -H pip3 install pyodbc
         pip3 install py2neo
-        ```
+```
+
+    Si des problèmes avec **pyodbc** subsistent, suivez [ces instructions](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15).
 
 3. (recommandé) Créez un environnement virtuel Python dans votre dossier local
 4. Installez **pyodbc**:  `sudo -H pip install pyodbc`
