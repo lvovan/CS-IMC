@@ -143,7 +143,7 @@ Pour affiner encore d'avantage, voici comment sélectionner tous les noeuds ayan
 
 ```
 MATCH ( n )
-WHERE n. label = 'value'
+WHERE n.label = 'value'
 RETURN n
 ```
 
