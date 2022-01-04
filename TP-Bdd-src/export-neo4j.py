@@ -10,7 +10,11 @@ username = os.environ["TPBDD_USERNAME"]
 password = os.environ["TPBDD_PASSWORD"]
 driver= '{ODBC Driver 17 for SQL Server}'
 
-graph = Graph(os.environ["TPBDD_NEO4J_SERVER"], auth=(os.environ["TPBDD_NEO4J_USER"], os.environ["TPBDD_NEO4J_PASSWORD"]))
+neo4j_server = os.environ["TPBDD_NEO4J_SERVER"]
+neo4j_user = os.environ["TPBDD_NEO4J_USER"]
+neo4j_password = os.environ["TPBDD_NEO4J_PASSWORD"]
+
+graph = Graph(neo4j_server, auth=(neo4j_user, neo4j_password))
 
 BATCH_SIZE = 10000
 

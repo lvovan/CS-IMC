@@ -36,7 +36,7 @@ Les enseignants vous fourniront les informations de connexion à trois bases de 
         sudo -H pip3 install pyodbc
         pip3 install py2neo
 ```
-Testez l'installation avec le programme [pyodbc-py2neo-test.py](TP-Bdd-src/pyodbc-py2neo-test.py), qui vous afficher `Connection OK!` si votre configuration est fonctionnelle. Si cela ne fonctionne pas, notamment avec **pyodbc**, suivez [ces instructions](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15).
+Testez l'installation avec le programme [pyodbc-py2neo-test.py](TP-Bdd-src/pyodbc-py2neo-test.py), qui vous affichera `Configuration OK!` si votre configuration est fonctionnelle. Si cela ne fonctionne pas, notamment avec **pyodbc**, suivez [ces instructions](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15).
 
 ## Exploration des données SQL
 **Exercice 0**: Décrivez les tables et les attributs.
