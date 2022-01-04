@@ -10,9 +10,11 @@ Dans ce TP, nous allons travailler sur des jeux de données publics issus des [d
 4. (optionnel) Encapsuler ces requêtes dans des API serverless (Azure Functions) et mesurer les performances
 
 ## Prérequis - Création et connexion aux bases de données
-**⚠️Notes:** Il est fortement conseillé de:
+Pour ce TP, il est fortement conseillé de:
 - Réaliser cette partie du TP sur une machine Linux (à date, certains composants ont des incompatibilités avec Windows et OSX)
 - Passer l'interface en **anglais** afin de suivre plus facilement les instructions du TP
+
+Les enseignants vous fourniront les informations de connexion à trois bases de données (Azure SQL Database, Neo4j et Cosmos DB).
 
 1. Si possible, installez [Azure Data Studio](https://docs.microsoft.com/fr-fr/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15) pour faciliter la création de vos requêtes SQL. Si ce n'est pas possible, vous pourrez également effectuer les requêtes depuis votre navigateur.
 2. Connectez-vous au [portail Azure](https://portal.azure.com), et ouvrez la page correspondant la base de données SQL `tpbdd-movies-sql`
