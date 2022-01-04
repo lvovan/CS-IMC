@@ -1,4 +1,4 @@
-# Travaux Pratiques Bases de Données Graphe et Serverless
+# Travaux Pratiques Bases de Données Relationnelles et Graphes
 Dans ce TP, nous allons travailler sur des jeux de données publics issus des [datasets IMDB](https://datasets.imdbws.com/)). Au démarrage du TP, ceux-ci sont disponibles dans une base de données relationelle [Azure SQL Database](https://docs.microsoft.com/fr-fr/azure/azure-sql/database/sql-database-paas-overview). Les objectifs du TP sont les suivants:
 
 1. Se familiariser avec les différences de paradigme entre le requêtage relationnel et graphe
@@ -9,22 +9,35 @@ Dans ce TP, nous allons travailler sur des jeux de données publics issus des [d
     - en [Apache Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps) sur une base de données graphe répartie [Cosmos Db](https://docs.microsoft.com/en-us/azure/cosmos-db/graph/graph-introduction)
 4. (optionnel) Encapsuler ces requêtes dans des API serverless (Azure Functions) et mesurer les performances
 
-## Création et connexion aux bases de données
-**⚠️Note:** Il est fortement conseillé de passer l'interface en **anglais** afin de suivre plus facilement les instructions du TP.
+## Prérequis - Création et connexion aux bases de données
+**⚠️Notes:** Il est fortement conseillé de:
+- Réaliser cette partie du TP sur une machine Linux (à date, certains composants ont des incompatibilités avec Windows et OSX)
+- Passer l'interface en **anglais** afin de suivre plus facilement les instructions du TP
 
-0. Si possible, installez [Azure Data Studio](https://docs.microsoft.com/fr-fr/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15) pour faciliter la création de vos requêtes SQL. Si ce n'est pas possible, vous pourrez également effectuer les requêtes depuis votre navigateur.
-1. Connectez-vous au [portail Azure](https://portal.azure.com), et ouvrez la page correspondant la base de données SQL `tpbdd-movies-sql`
-2. Autorisez votre adresse IP dans le firewall du serveur SQL, ce qui vous permettra d'effectuer vos requêtes depuis votre ordinateur:
+1. Si possible, installez [Azure Data Studio](https://docs.microsoft.com/fr-fr/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15) pour faciliter la création de vos requêtes SQL. Si ce n'est pas possible, vous pourrez également effectuer les requêtes depuis votre navigateur.
+2. Connectez-vous au [portail Azure](https://portal.azure.com), et ouvrez la page correspondant la base de données SQL `tpbdd-movies-sql`
+3. Autorisez votre adresse IP dans le firewall du serveur SQL, ce qui vous permettra d'effectuer vos requêtes depuis votre ordinateur:
 
-    1. Cliquez sur **Set server firewall**
+    a. Cliquez sur **Set server firewall**
 
-        ![image](https://user-images.githubusercontent.com/22498922/147907059-5ec9d710-461c-4354-8527-182bc2d70c02.png)
-    3. Puis sur **+ Add client IP**, ce qui ajoute votre IP à la liste existante
+        ![image](https://user-images.githubusercontent.com/22498922/148026521-0c4f5cf4-0fce-48e7-9747-e8148868a769.png)
+    b. Puis sur **+ Add client IP**, ce qui ajoute votre IP à la liste existante
 
-        ![image](https://user-images.githubusercontent.com/22498922/147907042-632dde1f-6e4b-4554-87f2-8866840ea8c0.png)
-    5. Puis sur **Save** pour appliquer l'ajout
+        ![image](https://user-images.githubusercontent.com/22498922/148026586-69fe9405-24ce-4c16-97d9-51853f7d5fab.png)
+    c. Puis sur **Save** pour appliquer l'ajout
 
-3. Connectez-vous à la base de données via l'onglet *Query editor)* à gauche, ou en récupérant les informations de connexion dans l'onglet **Connection strings** et en réutilisant ces informations dans Azure Data Studio.
+4. Connectez-vous à la base de données via l'onglet *Query editor)* à gauche, ou en récupérant les informations de connexion dans l'onglet **Connection strings** et en réutilisant ces informations dans Azure Data Studio.
+5. Sur votre poste de travail, installez les dépendances (**pyodbc** et **py2neo**) avec les commandes suivantes:
+
+```
+        sudo apt install unixodbc-dev
+        sudo -H pip3 install pyodbc
+        pip3 install py2neo
+```
+Testez l'installation avec le programme [pyodbc-py2neo-test.py](TP-Bdd-src/pyodbc-py2neo-test.py), qui vous afficher `Connection OK!` si votre configuration est fonctionnelle.
+
+Si cela ne fonctionne pas, notamment avec **pyodbc**, suivez [ces instructions](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15).
+
 
 ## Exploration des données SQL
 **Exercice 0**: Décrivez les tables et les attributs.
@@ -138,22 +151,11 @@ RETURN n
 Pour supprimer des noeuds, utilisez le statement `DELETE`.
 
 ## Export des données vers un modèle graphe
-**⚠️Note:** Il est fortement conseillé de réaliser cette partie du TP sur une machine Linux ou Mac.
 1. Téléchargez les fichiers [export-neo4j.py](TP-Bdd-src/export-neo4j.py) dans un dossier local. Il contient le code (Python) nécessaire à l'exécution de l'export, mais pas la logique de transformation des données.
 2. (recommandé) Créez un environnement virtuel Python dans votre dossier local
-3. Installez les dépendance (**pyodbc** et **py2neo**) avec les commandes suivantes:
-
-```
-        sudo apt install unixodbc-dev
-        sudo -H pip3 install pyodbc
-        pip3 install py2neo
-```
-
-Si des problèmes avec **pyodbc** subsistent, suivez [ces instructions](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15).
-
-4. Préparez un script qui initialise les variables d'environnement indiquées au début du fichier [export-neo4j](TP-Bdd-src/export-neo4j.py) (`TPBDD_SERVER`, `TPBDD_DB`, etc.) avec les informations de connexion récupérées dans la section précédente. Pour la variable `TPBDD_NEO4J_SERVER`, il s'agit de l'URL commençant par `bolt://` 
-5. Complétez le programme aux endroits notés `A COMPLETER`. N'hésitez pas à déboguer en ajoutant des `print`, créer des programmes de test etc. Utilisez les fonctions [`create_nodes` et `create_relationships`](https://py2neo.org/2021.0/bulk/index.html) de **py2neo**.
-6. Effectuez l'export vers votre base Neo4j Sandbox
+3. Préparez un script qui initialise les variables d'environnement indiquées au début du fichier [export-neo4j](TP-Bdd-src/export-neo4j.py) (`TPBDD_SERVER`, `TPBDD_DB`, etc.) avec les informations de connexion récupérées dans la section précédente. Pour la variable `TPBDD_NEO4J_SERVER`, il s'agit de l'URL commençant par `bolt://` 
+4. Complétez le programme aux endroits notés `A COMPLETER`. N'hésitez pas à déboguer en ajoutant des `print`, créer des programmes de test etc. Utilisez les fonctions [`create_nodes` et `create_relationships`](https://py2neo.org/2021.0/bulk/index.html) de **py2neo**.
+5. Effectuez l'export vers votre base Neo4j Sandbox
 
 ## Requêtes graphe (Cypher)
 **Exercice 1**: Ajoutez une personne ayant votre prénom et votre nom dans le graphe. Verifiez qui le noeud a bien éte crée. 
