@@ -18,13 +18,13 @@ Dans ce TP, nous allons travailler sur des jeux de données publics issus des [d
 2. Connectez-vous au [portail Azure](https://portal.azure.com), et ouvrez la page correspondant la base de données SQL `tpbdd-movies-sql`
 3. Autorisez votre adresse IP dans le firewall du serveur SQL, ce qui vous permettra d'effectuer vos requêtes depuis votre ordinateur:
 
-    a. Cliquez sur **Set server firewall**
+    1. Cliquez sur **Set server firewall**
 
-        ![image](https://user-images.githubusercontent.com/22498922/148026521-0c4f5cf4-0fce-48e7-9747-e8148868a769.png)
-    b. Puis sur **+ Add client IP**, ce qui ajoute votre IP à la liste existante
+        ![image](https://user-images.githubusercontent.com/22498922/148026683-53f02831-98f5-4a26-ae45-c17a8c6ee06e.png)
+    2. Puis sur **+ Add client IP**, ce qui ajoute votre IP à la liste existante
 
-        ![image](https://user-images.githubusercontent.com/22498922/148026586-69fe9405-24ce-4c16-97d9-51853f7d5fab.png)
-    c. Puis sur **Save** pour appliquer l'ajout
+        ![image](https://user-images.githubusercontent.com/22498922/148026702-262e142e-20e9-4b93-8e52-7599dca28e6e.png)
+    3. Puis sur **Save** pour appliquer l'ajout
 
 4. Connectez-vous à la base de données via l'onglet *Query editor)* à gauche, ou en récupérant les informations de connexion dans l'onglet **Connection strings** et en réutilisant ces informations dans Azure Data Studio.
 5. Sur votre poste de travail, installez les dépendances (**pyodbc** et **py2neo**) avec les commandes suivantes:
@@ -34,10 +34,7 @@ Dans ce TP, nous allons travailler sur des jeux de données publics issus des [d
         sudo -H pip3 install pyodbc
         pip3 install py2neo
 ```
-Testez l'installation avec le programme [pyodbc-py2neo-test.py](TP-Bdd-src/pyodbc-py2neo-test.py), qui vous afficher `Connection OK!` si votre configuration est fonctionnelle.
-
-Si cela ne fonctionne pas, notamment avec **pyodbc**, suivez [ces instructions](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15).
-
+Testez l'installation avec le programme [pyodbc-py2neo-test.py](TP-Bdd-src/pyodbc-py2neo-test.py), qui vous afficher `Connection OK!` si votre configuration est fonctionnelle. Si cela ne fonctionne pas, notamment avec **pyodbc**, suivez [ces instructions](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15).
 
 ## Exploration des données SQL
 **Exercice 0**: Décrivez les tables et les attributs.
