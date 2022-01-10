@@ -12,10 +12,8 @@ Dans ce TP nous utiliserons [Azure API Management](https://azure.microsoft.com/f
 ## Intégration à Azure API Management et transformation de la sortie
 On souhaite créer une API de calcul unifiée en s'appuyant sur de l'API Management.
 1. Intégrez-y les deux APIs testées précédemment. Observez que malgré le fait que les deux fonctions soient hébergées chez deux cloud providers distincts, qui plus est avec des technologies différentes, l'utilisation d'une couche d'API Management permet d'unifier leurs *endpoints*.
-
-    a. Vous noterez que la fonction déjà hébergée dans Azure est plus facile à intégrer (il y a directement une option *Azure Function*): c'est un exemple de facilité d'intégration lorsque vous hébergez plusieurs ressources chez le même cloud provider
-    b. Pour l'API hébergée chez AWS, vous utiliserez le connecteur *HTTP*
-
+    1. Vous noterez que la fonction déjà hébergée dans Azure est plus facile à intégrer (il y a directement une option *Azure Function*): c'est un exemple de facilité d'intégration lorsque vous hébergez plusieurs ressources chez le même cloud provider
+    2. Pour l'API hébergée chez AWS, vous utiliserez le connecteur *HTTP*
 2. Certaines applications historiques ne supportant que le XML souhaitent utiliser les fonctions proposées. Utilisez la fonctionnalité *Test* pour requêter vos API en configurant l'entête `Accept` à `application/json` et `application/xml`. Observez que le résultat est toujours au format Json.
 3. Configurez les policy de votre API Management afin de renvoyer du XML ou du Json en fonction de l'entête `Accept` utilisant la policy *Outbound* [json-to-xml](https://docs.microsoft.com/en-us/azure/api-management/api-management-transformation-policies#ConvertJSONtoXML) et testez.
 4. Afin de pouvoir servir à la fois du XML ou du Json en fonction de l'appelant, reconfigurez la policy *Outbound* pour qu'elle renvoie le bon format de données en fonction du header http *accept*. Notez que cette policy permet à API Management d'automatiquement ajouter l'entête `content-type`, ce qui permet au client de connaître le format des données renvoyées par le service via un [MIME Type](https://developer.mozilla.org/en-US/docs/Glossary/MIME_type)
