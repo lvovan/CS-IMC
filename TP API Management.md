@@ -6,8 +6,8 @@ Dans ce TP nous utiliserons [Azure API Management](https://azure.microsoft.com/f
 ⚠️Lancez dès maintenant la création d'une ressource **API Management** depuis le portail Azure, car la création peut prendre plusieurs minutes.
 
 ## Testez les deux APIs suivantes:
- - Suite de Lucas: [URL fournie lors du TP]()
- - Suite de Fibonacci: [URL fournie lors du TP]()
+ - Suite de Lucas: [sur Azure](https://apilucas.azurewebsites.net/api/LucasHttpTrigger?code=wzcWv0pcr5far3GrpfhjuC/8EgOC9XKODUBLkIj7BKaU1XLcbTdefA==)
+ - Suite de Fibonacci: [sur AWS](https://k2xmw15bkd.execute-api.eu-west-3.amazonaws.com/default/apifibo)
 
 ## Intégration à Azure API Management et transformation de la sortie
 On souhaite créer une API de calcul unifiée en s'appuyant sur de l'API Management.
