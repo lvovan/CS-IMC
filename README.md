@@ -16,14 +16,14 @@
 
 **Bases de Données NoSQL et Graph**
 
-🧪 [TP Base de Données Graphe et Serverless](https://github.com/lvovan/CS-IMC-2021-2022/blob/main/TP%20Bdd%20Graphe%20et%20Serverless.md)
+🧪 [TP Base de Données Graphe et Relationnelle](https://github.com/lvovan/CS-IMC-2021-2022/blob/main/TP%20Bdd%20Graphe%20et%20Relationnelle.md)
 
 **API Management**
 
 🧪 [TP API Management et Expérience Développeur](https://github.com/lvovan/CS-IMC-2021-2022/blob/main/TP%20API%20Management.md)
 
-**DevOps / Infrastructure-as-Code**
-- TBD
+**Base de données et API**
+🧪 [Conception et Déploiement d'API d'accès aux Données](https://github.com/lvovan/CS-IMC-2021-2022/blob/main/TP%20API%20Acces%20aux%20Donnees.md)
 
 **Cloud Native: Apps et Bases de Données serverless**
 - TBD
