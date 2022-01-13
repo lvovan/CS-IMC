@@ -22,7 +22,8 @@
 
 🧪 [TP API Management et Expérience Développeur](https://github.com/lvovan/CS-IMC-2021-2022/blob/main/TP%20API%20Management.md)
 
-**Base de données et API**
+**CI/CD pour une API**
+
 🧪 [Conception et Déploiement d'API d'accès aux Données](https://github.com/lvovan/CS-IMC-2021-2022/blob/main/TP%20API%20Acces%20aux%20Donnees.md)
 
 **Cloud Native: Apps et Bases de Données serverless**
