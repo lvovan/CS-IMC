@@ -1,4 +1,3 @@
-PS /home/luc/tf> cat main.tf
 provider "azurerm" {
     features {}
 }
@@ -6,6 +5,9 @@ provider "azurerm" {
 resource "azurerm_resource_group" "rg" {
     name     = "[A COMPLETER]-api-rg"
     location = "France Central"
+    tags = {
+       tpapi = "1"
+    }
 }
 
 resource "azurerm_storage_account" "storage" {

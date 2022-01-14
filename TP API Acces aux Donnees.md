@@ -1,14 +1,12 @@
 # Conception et Déploiement d'API d'accès aux Données
 Il est fortement conseillé de réaliser ce TP par groupe de deux étudiants.
 
-Lors de cette dernière séance de travaux pratiques nous allons continuer à travailler sur la base de données IMDB du précédent TP. L'objectif sera cette fois-ci d'intégrer les requêtes, dont certaines nouvelles, dans des APIs qui seront mises à disposition à des développeurs par le biais d'une plateforme d'API Management.
+Lors de cette dernière séance de travaux pratiques nous allons continuer à travailler sur la base de données IMDB du précédent TP. L'objectif sera cette fois-ci d'intégrer les requêtes, dont certaines nouvelles, dans des APIs déployées avec un CI/CD qui seront mises à disposition à des développeurs par le biais d'une plateforme d'API Management. Afin de découvrir l'utilisation d'outillage avancé, nous utiliserons aujourd'hui très peu le portail Azure - nous sacrifierons un peu de convivialité pour beaucoup d'efficacité!
 
 ## Préparatifs
-- Les prérequis pour accéder aux bases de données sont les mêmes que pour le TP précédent: [instructions](https://github.com/lvovan/CS-IMC-2021-2022/blob/main/TP%20Bdd%20Graphe%20et%20Relationnelle.md#pr%C3%A9requis---cr%C3%A9ation-et-connexion-aux-bases-de-donn%C3%A9es)
-- Si vous ne disposez pas encore d'une instance Azure API Management, créez-en une dès maintenant depuis le [portail Azure](https://portal.azure.com).
+- Ajoutez votre IP sur le firewall de la base de données du TP, comme documenté dans le [TP précédent](https://github.com/lvovan/CS-IMC-2021-2022/blob/main/TP%20Bdd%20Graphe%20et%20Relationnelle.md#pr%C3%A9requis---cr%C3%A9ation-et-connexion-aux-bases-de-donn%C3%A9es). - Il ne sera cette fois-ci pas obligatoire d'installer localement **pyodbc**, mais pouvoir tester votre code en local accélèrera considérablement votre développement.
 
 ## 1- Requêtes
-
 Des données supplémentaires sont disponibles par rapport au TP précédent:
 - Le ou les es genres (comédie, action...) associés aux films
 - Les notations (*averageRating*) pour les films - mais uniquement dans la base SQL
@@ -21,19 +19,18 @@ Pour se sensibiliser à la combinaisons de données multi-sources
 - 2x Idées de requêtes où il faudrait requêter Neo4j et SQL pour une performance/efficacité maximale. La colonne **tTitles.runtimeMinutes** ne sera disponible que dans la base de données SQL
 
 ## 2- Création en Terraform des ressources APIs en serverless
-Maintenant les requêtes conçues, créons des APIs qui permettront de les exécuter. En effet, les APIs permettent de:
- - **Réduire et simplifier les prérequis pour les clients.** Avec une API en http, l'appelant n'aura besoin d'installer ni SDK, ni driver spécifique
- - **Abstraire l'utilisation (endoint http) de l'implémentation (python, SQL, Cypher)**, fournissant une flexibilité supérieure lors de futures mises à jour de l'API
- - **Effectuer des opérations fonctionnelles et techniques au niveau de la couche API** (ex: transformations, caching...) avant de solliciter la base de données
+Maintenant les requêtes conçues, créons des APIs qui permettront de les exécuter. Exposer les requêtes sous forme d'APIs permet de:
+ - **Réduire et simplifier les prérequis pour les clients.** Avec une API en http, l'appelant n'aura besoin d'installer ni SDK, ni pilote/driver spécifique sur la machine effectuant l'appel
+ - **Abstraire l'utilisation (endoint http) de l'implémentation (Python, SQL, Cypher)**, fournissant une flexibilité bien supérieure lors de futures mises à jour de l'API
+ - **Effectuer des opérations fonctionnelles et techniques au niveau de la couche API** (ex: transformations, fusion de données, caching...) avant de solliciter la base de données
 
-Nous implémenterons ces APIs sous la forme de code en Python, hébergées en serverless ([FaaS](https://en.wikipedia.org/wiki/Function_as_a_service)) dans [Azure Function Apps](https://azure.microsoft.com/fr-fr/services/functions/) et déployées en CI/CD via [Github Actions](https://fr.github.com/features/actions).
+Nous implémenterons ces APIs en Python 3.9, hébergées en serverless ([FaaS](https://en.wikipedia.org/wiki/Function_as_a_service)) dans [Azure Function Apps](https://azure.microsoft.com/fr-fr/services/functions/) et déployées en CI/CD via [Github Actions](https://fr.github.com/features/actions).
 
 ### Infrastructure as Code avec Terraform
-Pour implémenter notre solution notre template Terraform aura besoin de préparer les éléments suivantes:
- - La base de données SQL qui contient les données relationnelles
- - L'[Azure Function App](https://azure.microsoft.com/fr-fr/services/functions/) qui gèrera le code Python, l'[App Service Plan](https://docs.microsoft.com/fr-fr/azure/app-service/overview-hosting-plans) associé qui s'occupe de son exécution et le [compte de stockage](https://docs.microsoft.com/fr-fr/azure/storage/common/storage-account-overview) qui le persiste.
- - Définir les paramètres de connexion pour que les Azure Functions sachent où se connecter (SQL, Neo4j)
- - Notons que pour des raisons de simplification, nous n'instancierons pas Neo4j via Terraform
+Nous utiliserons Terraform pour déployer automatiquement l'infrastructure à savoir:
+  - L'[Azure Function App](https://azure.microsoft.com/fr-fr/services/functions/) qui gèrera le code Python, l'[App Service Plan](https://docs.microsoft.com/fr-fr/azure/app-service/overview-hosting-plans) associé qui s'occupe de son exécution et le [compte de stockage](https://docs.microsoft.com/fr-fr/azure/storage/common/storage-account-overview) qui persiste le code de la fonction.
+ - Définit les paramètres de connexion pour que les Azure Functions sachent comment se connecter (SQL, Neo4j)
+ - Notons que pour des raisons de simplification, nous n'utiliserons pas Terraform pour instancier les bases SQL et Neo4j
 
  1. Connectez-vous au portail Azure et démarrez [Azure Cloud Shell](https://docs.microsoft.com/fr-fr/azure/cloud-shell/overview) via l'icône en haut à droite de la page (PowerShell ou Bash fonctionneront aussi biens l'un que l'autre)
  2. Créez un dossier dans lequel vous allez travailler
@@ -55,15 +52,20 @@ Pour implémenter notre solution notre template Terraform aura besoin de prépar
 3. Modifions maintenant le workflow de déploiement
     - Editez le fichier de workflow dans **.github/workflows/main.yml**
     - Modifiez la valeur de la variable d'environnement `AZURE_FUNCTIONAPP_NAME` pour y mettre le nom de la Function App créée précédemment par votre template Terraform
-    - Notez que la dernière ligne du workflow mentionne un secret nommé `AZURE_FUNCTIONAPP_PUBLISH_PROFILE`. Le *publish profile* contient les informations permettant de déployer du code dans votre function app. Il est disponible dans le portail Azure, au haut de la page principale de votre fonction via le bouton **Get publish profile"**.
-    - Téléchargez ce fichier, ouvrez le dans un éditeur de texte
-    - Retournez dans votre repository Github et dans les paramètres de votre repository créez le secret nommé `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` et collez le contenu du fichier *publish profile* en tant que valeur
+    - Notez que la dernière ligne du workflow mentionne un secret nommé `AZURE_FUNCTIONAPP_PUBLISH_PROFILE`. Le *publish profile* contient les informations, y compris les mots de passe, permettant de déployer du code dans votre function app. Vous pouvez le télécharger depuis le portail ou utiliser la commande `az webapp deployment list-publishing-profiles --name [nom_de_votre_fonction] --resource-group [nom_de_votre_groupe_de_ressource]`.
+    - Copiez le contenu du *publish profile*
+    - Retournez dans votre repository Github et dans les paramètres de votre repository créez le secret nommé `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` et avec comme valeur le contenu obtenu précédemment
 4. Retournez dans l'onglet **Actions** et vous devriez voir un déploiement se déclencher. Si ce n'est pas le cas, déclenchez le workflow manuellement.
 5. Retournez dans le portail Azure pour voir votre Function App
-6. Cliquez sur Functions: vous devriez voir 5 fonctions (Query1..5), cliquez sur Query1 puis sur **Get function Url** pour obtenir l'adresse qui vous permettra de tester le bon fonctionnement de votre fonction
+6. Cliquez sur Functions: vous devriez voir 5 fonctions (**Query1..5**), cliquez sur **Query1** puis sur **Get function Url** pour obtenir l'adresse qui vous permettra de tester le bon fonctionnement de votre fonction.
+7. Après avoir invoqué l'URL de *Query1*, vous devriez voir s'afficher quelques informations lues depuis les bases de données et un message confirmant la bonne exécution de la fonction. 
 
 ## 4- Implémentation des APIs
-Nous allons spécifier et implémenter maintenant les requêtes travaillées dans la partie 1. Vous utiliserez pour cela les fonctions **Query2** à **Query5** déjà préparées. Utilisez le code source de **Query1** pour apprendre comment requêter les bases de données en Python.
+Nous allons spécifier et implémenter maintenant les requêtes travaillées dans la partie 1. Vous utiliserez pour cela les fonctions **Query2** à **Query5** déjà préparées.
+
+- Utilisez le code source de **Query1** pour apprendre comment requêter les bases de données en Python.
+- Le package *py2neo* est utilisé pour requêter le base Neo4j, vous verrez un exemple de requête et de récupération des résultats
+- Idem pour *pyodbc* qui permet de requêter la base SQL
 
 ## 5- Mise à disposition via API Management
-Vos APIs devraient maintenant être techniquement fonctionnelles. Exposons-les en tant que produits avec plusieurs niveaux (**tiers**) via Azure API Management.
+Vos APIs devraient maintenant être techniquement fonctionnelles. Exposez-les en tant que produits avec plusieurs niveaux (**tiers**) via Azure API Management, et envoyez-nous un lien vers votre produit.
