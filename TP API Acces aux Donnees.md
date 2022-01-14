@@ -9,7 +9,7 @@ Ajoutez votre IP sur le firewall de la base de données du TP, comme documenté 
 ## 1- Requêtes
 Des données supplémentaires sont disponibles par rapport au TP précédent:
 - Le ou les genres (comédie, action...) associés aux films
-- Les notations (*averageRating*) pour les films - mais uniquement dans la base SQL
+- Les durées des films (*runtimeMinutes*) - mais uniquement dans la base SQL
 
 Ecrire les requêtes en SQL ou Cypher, selon la requête et vos préférences
 - Les genres pour lesquels au moins un film a une même personne qui a été la fois directeur et acteur (ex: si Alice a été acteur à la fois directeur dans une comédie, et que Bob a été à la fois acteur et directeur dans un film d'action alors il faut renvoyer [comédie, action])
