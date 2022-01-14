@@ -11,12 +11,13 @@ Des données supplémentaires sont disponibles par rapport au TP précédent:
 - Le ou les es genres (comédie, action...) associés aux films
 - Les notations (*averageRating*) pour les films - mais uniquement dans la base SQL
 
-Ecrire les requêtes 
--  le genre des films directed et avec la participation du meme artiste
-- En SQL: la note moyenne des films par genre/artiste/directeur
+Ecrire les requêtes en SQL ou Cypher, selon la requête et vos préférences
+- Les genres pour lesquels au moins un film a une même personne qui a été la fois directeur et acteur (ex: si Alice a été acteur à la fois directeur dans une comédie, et que Bob a été à la fois acteur et directeur dans un film d'action alors il faut renvoyer [comédie, action])
+- La note moyenne des films par genre
 
-Pour se sensibiliser à la combinaisons de données multi-sources
-- 2x Idées de requêtes où il faudrait requêter Neo4j et SQL pour une performance/efficacité maximale. La colonne **tTitles.runtimeMinutes** ne sera disponible que dans la base de données SQL
+Pour les requêtes suivantes, utilisez *au moins* la base de données graphe (i.e. ne faites pas que du SQL!)
+- Requêtez la base pour aider à déterminer si il y a une correlation entre la durée d'un film et son genre
+- Même demande que précédemment, en ajoutant le rating
 
 ## 2- Création en Terraform des ressources APIs en serverless
 Maintenant les requêtes conçues, créons des APIs qui permettront de les exécuter. Exposer les requêtes sous forme d'APIs permet de:
@@ -53,7 +54,7 @@ Nous utiliserons Terraform pour déployer automatiquement l'infrastructure à sa
 3. Modifions maintenant le workflow de déploiement
     - Editez le fichier de workflow dans **.github/workflows/main.yml**
     - Modifiez la valeur de la variable d'environnement `AZURE_FUNCTIONAPP_NAME` pour y mettre le nom de la Function App précédemment instanciée par votre template Terraform
-    - Notez que la dernière ligne du workflow mentionne un secret nommé `AZURE_FUNCTIONAPP_PUBLISH_PROFILE`. Le *publish profile* contient les informations, y compris les mots de passe, permettant de déployer du code dans votre function app. Vous pouvez le télécharger en utilisant la commande `az webapp deployment list-publishing-profiles --name [nom_de_votre_fonction] --resource-group [nom_de_votre_groupe_de_ressource]` depuis le Cloud Shell.
+    - Notez que la dernière ligne du workflow mentionne un secret nommé `AZURE_FUNCTIONAPP_PUBLISH_PROFILE`. Le *publish profile* contient les informations, y compris les mots de passe, permettant de déployer du code dans votre function app. Vous pouvez le télécharger en utilisant la commande `az functionapp deployment list-publishing-profiles --name [nom_de_votre_fonction] --resource-group [nom_de_votre_groupe_de_ressource]` depuis le Cloud Shell.
     - Retournez dans votre repository Github et dans les paramètres de votre repository créez le secret nommé `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` et avec comme valeur le contenu du *publish profile* obtenu précédemment
 4. Retournez dans l'onglet **Actions** et vous devriez voir un déploiement se déclencher. Si ce n'est pas le cas, déclenchez le workflow manuellement.
 5. Retournez dans le portail Azure pour voir votre Function App
@@ -61,11 +62,17 @@ Nous utiliserons Terraform pour déployer automatiquement l'infrastructure à sa
 7. Après avoir invoqué l'URL de *Query1*, vous devriez voir s'afficher quelques informations lues depuis les bases de données et un message confirmant la bonne exécution de la fonction. 
 
 ## 4- Implémentation des APIs
-Nous allons spécifier et implémenter maintenant les requêtes travaillées dans la partie 1. Vous utiliserez pour cela les fonctions **Query2** à **Query5** déjà préparées.
+Nous allons spécifier et implémenter maintenant les requêtes travaillées dans la partie 1 et le TP précédent. Vous utiliserez pour cela les fonctions **Query2** à **Query5** déjà préparées pour vous dans le repository.
 
-- Utilisez le code source de **Query1** pour apprendre comment requêter les bases de données en Python.
+ℹ️ Pour éditer les fichiers directement depuis votre repository, changez simplement le domaine de l'URL dans votre navigateur en remplaçant github**.com** par github**.dev**
+
+- Utilisez le code source de **Query1** pour apprendre comment requêter les deux types de bases de données en Python
 - Le package *py2neo* est utilisé pour requêter le base Neo4j, vous verrez un exemple de requête et de récupération des résultats
 - Idem pour *pyodbc* qui permet de requêter la base SQL
+
+Pour les requêtes 2 à 4, implémentez les requêtes de votre choix entre celles du TP précédent et celles de la partie 1. N'implémentez pas toutes ces requêtes avec la même technologie de requêtage.
+
+Pour la requête 5, spécifiez et implémentez une API qui renvoie la durée moyenne des films qui correspondent aux critères genre, acteur et directeur. L'interprétation de cette énoncé vous est laissée libre.
 
 ## 5- Mise à disposition via API Management
 Vos APIs devraient maintenant être techniquement fonctionnelles. Exposez-les en tant que produits avec plusieurs niveaux (**tiers**) via Azure API Management, et envoyez-nous un lien vers votre produit.
