@@ -29,10 +29,9 @@ Nous implémenterons ces APIs en Python 3.9, hébergées en serverless ([FaaS](h
 
 ### Infrastructure as Code avec Terraform
 Nous utiliserons Terraform pour déployer automatiquement l'infrastructure à savoir:
-
     - L'[Azure Function App](https://azure.microsoft.com/fr-fr/services/functions/) qui gèrera le code Python, l'[App Service Plan](https://docs.microsoft.com/fr-fr/azure/app-service/overview-hosting-plans) associé qui s'occupe de son exécution et le [compte de stockage](https://docs.microsoft.com/fr-fr/azure/storage/common/storage-account-overview) qui persiste le code de la fonction.
-     - Définit les paramètres de connexion pour que les Azure Functions sachent comment se connecter (SQL, Neo4j)
-     - Notons que pour des raisons de simplification, nous n'utiliserons pas Terraform pour instancier les bases SQL et Neo4j
+    - Définit les paramètres de connexion pour que les Azure Functions sachent comment se connecter (SQL, Neo4j)
+    - Notons que pour des raisons de simplification, nous n'utiliserons pas Terraform pour instancier les bases SQL et Neo4j
 
  1. Connectez-vous au portail Azure et démarrez [Azure Cloud Shell](https://docs.microsoft.com/fr-fr/azure/cloud-shell/overview) via l'icône en haut à droite de la page (PowerShell ou Bash fonctionneront aussi biens l'un que l'autre)
  2. Créez un dossier dans lequel vous allez travailler
@@ -46,7 +45,6 @@ Nous utiliserons Terraform pour déployer automatiquement l'infrastructure à sa
  10. Créez votre plan d'exécution: `terraform plan -out main.plan`
  11. Exécutez le plan: `terraform apply main.plan`
  12. Vérifiez que toutes les ressources ont été créées telles que déclarées dans votre templatem y compris les app settings. Si ce n'est pas le cas, vous pouvez soit:
-
     - Corrigez votre template, puis ré-exécuter `plan` et `apply`
     - Ou tout détruire avec `destroy` et relancer - vous verrez que certains types de ressources ne peuvent être mises à jour et doivent être détruites pour ensuite être reconstruites avec la configuration désirées.
 
