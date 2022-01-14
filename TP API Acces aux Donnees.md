@@ -57,7 +57,7 @@ Nous utiliserons Terraform pour déployer automatiquement l'infrastructure à sa
     - Modifiez la valeur de la variable d'environnement `AZURE_FUNCTIONAPP_NAME` pour y mettre le nom de la Function App précédemment instanciée par votre template Terraform
     - Notez que la dernière ligne du workflow mentionne un secret nommé `AZURE_FUNCTIONAPP_PUBLISH_PROFILE`. Le *publish profile* contient les informations, y compris les mots de passe, permettant de déployer du code dans votre function app. Vous pouvez le télécharger en allant sur votre fonction depuis le portail Azure et en cliquant sur `Get publish profile`
     - Retournez dans votre repository Github et dans les paramètres de votre repository créez le secret nommé `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` et avec comme valeur le contenu du *publish profile* précédemment téléchargé
-4. Retournez dans l'onglet **Actions** et déclenchez le workflow manuellement. Optionnellement, vous pouvez modifier le workflow pour qu'il se déclenche sur chaque push (très pratique!)
+4. Retournez dans l'onglet **Actions** et déclenchez le workflow manuellement s'il ne s'est pas déclenché tout seul.
 5. Retournez dans le portail Azure pour voir votre Function App
 6. Cliquez sur Functions: vous devriez voir 5 fonctions (**Query1..5**), cliquez sur **Query1** puis sur **Get function Url** pour obtenir l'adresse qui vous permettra de tester le bon fonctionnement de votre fonction.
 7. Après avoir invoqué l'URL de *Query1*, vous devriez voir s'afficher quelques informations lues depuis les bases de données et un message confirmant la bonne exécution de la fonction. 
