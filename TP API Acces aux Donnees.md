@@ -16,7 +16,7 @@ Ecrire les requêtes en SQL ou Cypher, selon la requête et vos préférences
 - La note moyenne des films par genre
 
 Pour les requêtes suivantes, utilisez *au moins* la base de données graphe (i.e. ne faites pas que du SQL!)
-- Requêtez la base pour aider à déterminer si il y a une correlation entre la durée d'un film et son genre
+- Réfléchissez à une manière de déterminer s'il y a une correlation entre la durée d'un film et son genre
 - Même demande que précédemment, en ajoutant le rating
 
 ## 2- Création en Terraform des ressources APIs en serverless
