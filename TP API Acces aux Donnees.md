@@ -64,7 +64,7 @@ Nous utiliserons Terraform pour déployer automatiquement l'infrastructure à sa
 ## 4- Implémentation des APIs
 Nous allons spécifier et implémenter maintenant les requêtes travaillées dans la partie 1 et le TP précédent. Vous utiliserez pour cela les fonctions **Query2** à **Query5** déjà préparées pour vous dans le repository.
 
-ℹ️ Pour éditer les fichiers directement depuis votre repository, changez simplement le domaine de l'URL dans votre navigateur en remplaçant github**.com** par github**.dev**
+ℹ️ Pour éditer les fichiers directement depuis votre repository, changez simplement le domaine de l'URL dans votre navigateur en remplaçant **github.com** par **github.dev**
 
 - Utilisez le code source de **Query1** pour apprendre comment requêter les deux types de bases de données en Python
 - Le package *py2neo* est utilisé pour requêter le base Neo4j, vous verrez un exemple de requête et de récupération des résultats
