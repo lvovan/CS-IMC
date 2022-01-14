@@ -35,26 +35,26 @@ Nous utiliserons Terraform pour déployer automatiquement l'infrastructure à sa
  1. Connectez-vous au portail Azure et démarrez [Azure Cloud Shell](https://docs.microsoft.com/fr-fr/azure/cloud-shell/overview) via l'icône en haut à droite de la page (PowerShell ou Bash fonctionneront aussi biens l'un que l'autre)
  2. Créez un dossier dans lequel vous allez travailler
  3. Initialisez Terraform pour une première utilisation: `terraform init`
- 4. Téléchargez le template Terraform **api.tf** préparé pour ce TP avec `curl https://raw.githubusercontent.com/lvovan/CS-IMC-2021-2022/main/TP-API/api.tf` 
- 5. Editez le et modifiez les noms de toutes les ressources (`name`) pour les rendre unique, en intégrant par exemple vos noms
+ 4. Téléchargez le template Terraform [api.tf](https://raw.githubusercontent.com/lvovan/CS-IMC-2021-2022/main/TP-API/api.tf), déjà préparé pour ce TP. Utilisez `curl` ou `wget` depuis le Cloud Shell.
+ 5. Editez le et modifiez les noms de toutes les ressources (`name`) pour les rendre uniques (ex: préfixez par vos noms). Vous pouvez utiliser l'éditeur inclus dans le Cloud Shell (bouton **{}**), ou encore **vim** ou **nano**.
  6. Pour la Function App et l'App Service Plan, compléter les propriétés `resource-group-name` et `location` pour vous assurer que ces deux ressources sont positionnées dans le groupe de ressource adéquat, et créées dans la même région Azure que ce dernier.
- 7. Remplissez les paramètres manquants dans la section `app_settings`. Ces paramètres seront utilisées par les fonctions pour se connecter aux bases.
- 8. Vérifiez que votre template est correct avec `terraform validate`, corrigez si nécessaire
- 8. Créez votre plan d'exécution: `terraform plan -out main.plan`
- 9. Exécutez le plan: `terraform apply main.plan`
-10. Vérifiez que toutes les ressources ont été créées telles que déclarées dans votre templatem y compris les app settings. Si ce n'est pas le cas, vous pouvez soit:
-- Modifier votre template, exécuter `plan` et `apply`
-- Ou tout détruire avec `destroy` et relancer - vous verrez que certains types de ressources ne peuvent être mises à jour et doivent être détruites pour ensuite être reconstruites avec la configuration désirées.
+ 7. Remplissez les paramètres manquants dans la section `app_settings`. Ces paramètres seront utilisées par les fonctions pour se connecter aux bases. ⚠️ Le fichier tf n'ira pas sur le source control git donc indiquer les paramètres (dont les mots de passe) en dur ne pose pas de problème immédiat de sécurité. Dans un projet d'entreprise ces paramètres utiliseraient des secrets dans le CI/CD comme nous le verrons dans la section 3.
+ 8. (optionnel) Pour un peu d'exotisme, vous pouvez modifier la location du groupe de ressource, la [liste est documentée](https://github.com/claranet/terraform-azurerm-regions/blob/master/REGIONS.md), utilisez la première colonne (*Region name*)
+ 9. Vérifiez que votre template est correct avec `terraform validate`, corrigez si nécessaire
+ 10. Créez votre plan d'exécution: `terraform plan -out main.plan`
+ 11. Exécutez le plan: `terraform apply main.plan`
+ 12. Vérifiez que toutes les ressources ont été créées telles que déclarées dans votre templatem y compris les app settings. Si ce n'est pas le cas, vous pouvez soit:
+    - Corrigez votre template, puis ré-exécuter `plan` et `apply`
+    - Ou tout détruire avec `destroy` et relancer - vous verrez que certains types de ressources ne peuvent être mises à jour et doivent être détruites pour ensuite être reconstruites avec la configuration désirées.
 
 ## 3- Déploiement automatisé avec Github Actions
 1. Si vous ne disposez pas d'un compte Github, [créez-en un](https://github.com/signup)
-2. Clonez le repository [https://github.com/lvovan/CS-IMC-2021-2022-TP-API](https://github.com/lvovan/CS-IMC-2021-2022-TP-API)
+2. Forkez le repository [https://github.com/lvovan/CS-IMC-2021-2022-TP-API](https://github.com/lvovan/CS-IMC-2021-2022-TP-API) en utilisant le bouton **Fork** situé en haut à droite de la page.
 3. Modifions maintenant le workflow de déploiement
     - Editez le fichier de workflow dans **.github/workflows/main.yml**
-    - Modifiez la valeur de la variable d'environnement `AZURE_FUNCTIONAPP_NAME` pour y mettre le nom de la Function App créée précédemment par votre template Terraform
-    - Notez que la dernière ligne du workflow mentionne un secret nommé `AZURE_FUNCTIONAPP_PUBLISH_PROFILE`. Le *publish profile* contient les informations, y compris les mots de passe, permettant de déployer du code dans votre function app. Vous pouvez le télécharger depuis le portail ou utiliser la commande `az webapp deployment list-publishing-profiles --name [nom_de_votre_fonction] --resource-group [nom_de_votre_groupe_de_ressource]`.
-    - Copiez le contenu du *publish profile*
-    - Retournez dans votre repository Github et dans les paramètres de votre repository créez le secret nommé `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` et avec comme valeur le contenu obtenu précédemment
+    - Modifiez la valeur de la variable d'environnement `AZURE_FUNCTIONAPP_NAME` pour y mettre le nom de la Function App précédemment instanciée par votre template Terraform
+    - Notez que la dernière ligne du workflow mentionne un secret nommé `AZURE_FUNCTIONAPP_PUBLISH_PROFILE`. Le *publish profile* contient les informations, y compris les mots de passe, permettant de déployer du code dans votre function app. Vous pouvez le télécharger en utilisant la commande `az webapp deployment list-publishing-profiles --name [nom_de_votre_fonction] --resource-group [nom_de_votre_groupe_de_ressource]` depuis le Cloud Shell.
+    - Retournez dans votre repository Github et dans les paramètres de votre repository créez le secret nommé `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` et avec comme valeur le contenu du *publish profile* obtenu précédemment
 4. Retournez dans l'onglet **Actions** et vous devriez voir un déploiement se déclencher. Si ce n'est pas le cas, déclenchez le workflow manuellement.
 5. Retournez dans le portail Azure pour voir votre Function App
 6. Cliquez sur Functions: vous devriez voir 5 fonctions (**Query1..5**), cliquez sur **Query1** puis sur **Get function Url** pour obtenir l'adresse qui vous permettra de tester le bon fonctionnement de votre fonction.
