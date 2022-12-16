@@ -39,6 +39,8 @@ Les enseignants vous fourniront les informations de connexion à trois bases de 
 Testez l'installation avec le programme [pyodbc-py2neo-test.py](TP-Bdd-src/pyodbc-py2neo-test.py), qui vous affichera `Configuration OK!` si votre configuration est fonctionnelle. Si cela ne fonctionne pas, notamment avec **pyodbc**, suivez [ces instructions](https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15).
 
 ## Exploration des données SQL
+Ecrire les requêtes ci-dessous, et les expliquer en deux ou trois phrases maximum en français ou en anglais.
+
 **Exercice 0**: Décrivez les tables et les attributs.
 
 **Exercice 1**: Visualisez l'année de naissance de l'artiste `Jude Law`.
@@ -157,6 +159,8 @@ Pour supprimer des noeuds, utilisez le statement `DELETE`.
 5. Effectuez l'export vers votre base Neo4j Sandbox
 
 ## Requêtes graphe (Cypher)
+Ecrire les requêtes ci-dessous, et les expliquer en deux ou trois phrases maximum en français ou en anglais.
+
 **Exercice 1**: Ajoutez une personne ayant votre prénom et votre nom dans le graphe. Verifiez qui le noeud a bien éte crée. 
 
 **Exercice 2**: Ajoutez un film nommé `L'histoire de mon 20 au cours Infrastructure de donnees`
