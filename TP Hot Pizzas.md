@@ -11,7 +11,7 @@
 ## 1- Création de l'Injecteur d'évènements
 
 1. Créer un service [Azure Event Hubs](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-features) ([instructions](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-create))
-2. Créer une [Azure Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview) pour injecter des évènements dans l'Event Hubs créé précédemment ([instructions](https://docs.microsoft.com/en-us/azure/logic-apps/quickstart-create-first-logic-app-workflow))
+2. Créer une [Azure Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview) en mode **Consommation** pour injecter des évènements dans l'Event Hubs créé précédemment ([instructions](https://docs.microsoft.com/en-us/azure/logic-apps/quickstart-create-first-logic-app-workflow))
 3. Commencer le workflow Logic Apps avec un *Step* de type *Recurrence* (définir la fréquence)
 4. Utiliser un Step de type *Send Event*
 5. Utiliser la fonction random (*rand*) dans le JSON pour faire varier les valeurs...
