@@ -36,4 +36,4 @@ except Exception as error:
 	print(error)
 	print("Note: Si vous avez un timeout, réessayez dans quelques secondes pour donner à la base de données le temps de se 'réveiller'.")
 
-print
+print()
