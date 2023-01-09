@@ -22,12 +22,18 @@ try:
 	print("Test de connexion avec py2neo...")
 	graph = Graph(neo4j_server, auth=(neo4j_user, neo4j_password))
 	graph.run("MATCH (n:Test) RETURN n")
+	print("Réussi!")
 
+	print()
+	      
 	print("Test de connexion avec pyodbc...")
 	with pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password) as conn:
 		cursor = conn.cursor()
 		cursor.execute("SELECT 1")
-		print("Configuration OK!")
+		print("Réussi!")
+	
+	print()
+	print("Configuration OK!")
 except Exception as error:
 	print(error)
 	print("Note: Si vous avez un timeout, réessayez dans quelques secondes pour donner à la base de données le temps de se 'réveiller'.")
