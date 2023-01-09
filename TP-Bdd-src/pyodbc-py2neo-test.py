@@ -19,21 +19,19 @@ if len(server)==0 or len(database)==0 or len(username)==0 or len(password)==0 or
 	exit(1)
 
 try:
-	print("Test de connexion avec py2neo...")
+	print("Test de connexion avec py2neo...", end="", flush=True)
 	graph = Graph(neo4j_server, auth=(neo4j_user, neo4j_password))
 	graph.run("MATCH (n:Test) RETURN n")
-	print("Réussi!")
-
-	print()
+	print("✔️")
 	      
-	print("Test de connexion avec pyodbc...")
+	print("Test de connexion avec pyodbc...", end="", flush=True)
 	with pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password) as conn:
 		cursor = conn.cursor()
 		cursor.execute("SELECT 1")
-		print("Réussi!")
+		print("✔️")
 	
 	print()
-	print("Configuration OK!")
+	print("La configuration est valide. L'énoncé du TP est disponible sur: https://github.com/lvovan/CS-IMC/blob/main/TP%20Bdd%20Graphe%20et%20Relationnelle.md")
 except Exception as error:
 	print(error)
 	print("Note: Si vous avez un timeout, réessayez dans quelques secondes pour donner à la base de données le temps de se 'réveiller'.")
