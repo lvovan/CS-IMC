@@ -18,7 +18,7 @@ Les enseignants vous fourniront les informations de connexion à trois bases de 
 
 1. Si possible, installez [Azure Data Studio](https://docs.microsoft.com/fr-fr/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15) pour faciliter la création de vos requêtes SQL. Si ce n'est pas possible, vous pourrez également effectuer les requêtes depuis votre navigateur.
 2. Connectez-vous au [portail Azure](https://portal.azure.com), et ouvrez la page correspondant la base de données SQL `tpbdd-movies-sql`
-3. Un environnement de développement a été préparé pour la partie codage, vous pouvez vous y connecter en SSH en utilisant les information de connexion fournies par les enseignants.
+3. Un environnement de développement a été préparé pour la partie codage, vous pouvez vous y connecter en SSH en utilisant les information de connexion fournies par les enseignants. Vous pouvez éditer les fichiers directement avec `vim` ou `nano` mais nous vous conseillons fortement d'utiliser [Visual Studio Code](https://code.visualstudio.com/) et son extension [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) pour éditer le code distant avec un maximum de confort.
 
 # Partie 1 - Base de données relationnelle - Azure SQL Database
 Ecrire les requêtes ci-dessous, et les expliquer en deux ou trois phrases maximum en français ou en anglais.
