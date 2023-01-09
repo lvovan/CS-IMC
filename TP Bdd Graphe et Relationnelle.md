@@ -25,21 +25,21 @@ Ecrire les requêtes ci-dessous, et les expliquer en deux ou trois phrases maxim
 
 **Exercice 0**: Décrivez les tables et les attributs.
 
-**Exercice 1**: Visualisez l'année de naissance de l'artiste `Jude Law`.
+**Exercice 1** (¼ pt): Visualisez l'année de naissance de l'artiste `Jude Law`.
 
-**Exercice 2**: Comptez le nombre d'artistes présents dans la base de donnee. 
+**Exercice 2** (¼ pt): Comptez le nombre d'artistes présents dans la base de donnee. 
 
-**Exercice 3**: Trouvez les noms des artistes nés en `1960`, affichez ensuite leur nombre.
+**Exercice 3** (¼ pt): Trouvez les noms des artistes nés en `1960`, affichez ensuite leur nombre.
 
-**Exercice 4**: Trouvez l'année de naissance la plus représentée parmi les acteurs (sauf 0!), et combien d'acteurs sont nés cette année là.
+**Exercice 4** (1 pt): Trouvez l'année de naissance la plus représentée parmi les acteurs (sauf 0!), et combien d'acteurs sont nés cette année là.
 
-**Exercice 5**: Trouvez les artistes ayant joué dans plus d'un film
+**Exercice 5** (½ pt): Trouvez les artistes ayant joué dans plus d'un film
 
-**Exercice 6**: Trouvez les artistes ayant eu plusieurs responsabilités au cours de leur carrière (acteur, directeur, producteur...).
+**Exercice 6** (½ pt): Trouvez les artistes ayant eu plusieurs responsabilités au cours de leur carrière (acteur, directeur, producteur...).
 
-**Exercice 7**: Trouver le nom du ou des film(s) ayant le plus d'acteurs (i.e. uniquement *acted in*).
+**Exercice 7** (¾ pt): Trouver le nom du ou des film(s) ayant le plus d'acteurs (i.e. uniquement *acted in*).
 
-**Exercice 8**: Montrez les artistes ayant eu plusieurs responsabilités dans un même film (ex: à la fois acteur et directeur, ou toute autre combinaison) et les titres de ces films.
+**Exercice 8** (1 pt): Montrez les artistes ayant eu plusieurs responsabilités dans un même film (ex: à la fois acteur et directeur, ou toute autre combinaison) et les titres de ces films.
 
 # Partie 2 - Base de données graphe - Neo4j
 Neo4j est une base de données graphe. Les données sont représentées par des nœuds, des relations entre les nœuds et des propriétés:
@@ -136,34 +136,34 @@ Pour supprimer des noeuds, utilisez le statement `DELETE`.
 # Partie 3 - Export des données vers un modèle graphe
 1. Dans le dossier `tp`, complétez le programme [export-neo4j.py](TP-Bdd-src/export-neo4j.py) aux endroits notés `A COMPLETER`. N'hésitez pas à déboguer en ajoutant des `print`, créer des programmes de test etc. Utilisez les fonctions [`create_nodes` et `create_relationships`](https://py2neo.org/2021.0/bulk/index.html) de **py2neo**.
 2. Effectuez l'export vers votre base Neo4j Sandbox
-3. (optionnel, points bonus) Décrivez de quelle manière l'environnement de développement a été préconfiguré pour vous:
+3. (optionnel, 2 points bonus) Décrivez de quelle manière l'environnement de développement a été préconfiguré pour vous:
     - Environnement Python
     - Informations de connexion aux bases de données
 
 # Partie 4 - Requêtes graphe (Cypher)
 Ecrire les requêtes ci-dessous, et les expliquer en deux ou trois phrases maximum en français ou en anglais.
 
-**Exercice 1**: Ajoutez une personne ayant votre prénom et votre nom dans le graphe. Verifiez qui le noeud a bien éte crée. 
+**Exercice 1** (¼ pt): Ajoutez une personne ayant votre prénom et votre nom dans le graphe. Verifiez qui le noeud a bien éte crée. 
 
-**Exercice 2**: Ajoutez un film nommé `L'histoire de mon 20 au cours Infrastructure de donnees`
+**Exercice 2** (¼ pt): Ajoutez un film nommé `L'histoire de mon 20 au cours Infrastructure de donnees`
 
-**Exercice 3**: Ajoutez la relation `ACTED_IN` qui modélise votre participation à ce film en tant qu'acteur/actrice
+**Exercice 3** (½ pt): Ajoutez la relation `ACTED_IN` qui modélise votre participation à ce film en tant qu'acteur/actrice
 
-**Exercice 4**: Ajoutez deux de vos professeurs/enseignants comme réalisateurs/réalisatrices de ce film.
+**Exercice 4** (½ pt): Ajoutez deux de vos professeurs/enseignants comme réalisateurs/réalisatrices de ce film.
 
-**Exercice 5**: Affichez le noeud représentant l'acteur nommé `Jude Law`, et visualisez son année de naissance.
+**Exercice 5** (½ pt): Affichez le noeud représentant l'acteur nommé `Jude Law`, et visualisez son année de naissance.
 
-**Exercice 6**: Visualisez l'ensemble des films.
+**Exercice 6** (½ pt): Visualisez l'ensemble des films.
 
-**Exercice 7**: Trouvez les noms des artistes nés en `1960`, affichez ensuite leur nombre.
+**Exercice 7** (½ pt): Trouvez les noms des artistes nés en `1960`, affichez ensuite leur nombre.
 
-**Exercice 8**: Trouver l'ensemble des acteurs (sans entrées doublons) qui ont joué dans plus d'un film.
+**Exercice 8** (1 pt): Trouver l'ensemble des acteurs (sans entrées doublons) qui ont joué dans plus d'un film.
 
-**Exercice 9**: Trouvez les artistes ayant eu plusieurs responsabilités au cours de leur carrière (acteur, directeur, producteur...).
+**Exercice 9** (1 pt): Trouvez les artistes ayant eu plusieurs responsabilités au cours de leur carrière (acteur, directeur, producteur...).
 
-**Exercice 10**: Montrez les artistes ayant eu plusieurs responsabilités dans un même film (ex: à la fois acteur et directeur, ou toute autre combinaison) et les titres de ces films.
+**Exercice 10** (1 pt): Montrez les artistes ayant eu plusieurs responsabilités dans un même film (ex: à la fois acteur et directeur, ou toute autre combinaison) et les titres de ces films.
 
-**Exercice 11**: Trouver le nom du ou des film(s) ayant le plus d'acteurs.
+**Exercice 11** (2 pt): Trouver le nom du ou des film(s) ayant le plus d'acteurs.
 
 ## Requêtes graphe (Gremlin)
 Une autre base de données graphe a été créée pour ce TP.  Elle utilise la technologie Cosmos DB et utilise un langage de requêtage différent: [Apache Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps).
@@ -171,6 +171,7 @@ Une autre base de données graphe a été créée pour ce TP.  Elle utilise la t
 Vous pourrez trouver cette base, déjà préremplie, dans le portail Azure sous le nom `tpbdd-movies-cdb`. Vous pourrez y effectuer des requêtes en utilisant l'onglet **Data Explorer**.
 
 **Exercices**: Effectuez toutes les requêtes de la section précédentes en utilisant ce langage de requêtage.
+Barême: [1-¼]  [2-¼] [3-¼] [4-¼] [5-¼] [6-¼] [7-½] [8-1,5] [9-2] [10-2] [11-5 (bonus)]
 
-## (optionnel, points bonus) Encapsulation dans des APIs serverless
+## (optionnel, 3 points bonus) Encapsulation dans des APIs serverless
 Implémentez quelques unes des requêtes du TP sous forme d'API Serverless avec Azure Function ou AWS Lambda. Mesurez les performances.
