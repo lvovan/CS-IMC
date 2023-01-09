@@ -30,8 +30,8 @@ try:
 		cursor.execute("SELECT 1")
 		print("✔️")
 	
-	print()
-	print("La configuration est valide. L'énoncé du TP est disponible sur: https://github.com/lvovan/CS-IMC/blob/main/TP%20Bdd%20Graphe%20et%20Relationnelle.md")
+	print("La configuration est valide.")
+	print("L'énoncé du TP est disponible sur: https://github.com/lvovan/CS-IMC/blob/main/TP%20Bdd%20Graphe%20et%20Relationnelle.md")
 except Exception as error:
 	print(error)
 	print("Note: Si vous avez un timeout, réessayez dans quelques secondes pour donner à la base de données le temps de se 'réveiller'.")
