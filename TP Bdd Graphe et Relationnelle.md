@@ -171,6 +171,7 @@ Une autre base de données graphe a été créée pour ce TP.  Elle utilise la t
 Vous pourrez trouver cette base, déjà préremplie, dans le portail Azure sous le nom `tpbdd-movies-cdb`. Vous pourrez y effectuer des requêtes en utilisant l'onglet **Data Explorer**.
 
 **Exercices**: Effectuez toutes les requêtes de la section précédentes en utilisant ce langage de requêtage.
+
 Barême: [1-¼]  [2-¼] [3-¼] [4-¼] [5-¼] [6-¼] [7-½] [8-1,5] [9-2] [10-2] [11-5 (bonus)]
 
 ## (optionnel, 3 points bonus) Encapsulation dans des APIs serverless
