@@ -20,17 +20,17 @@ BATCH_SIZE = 10000
 
 print("Deleting existing nodes and relationships...")
 graph.run("MATCH ()-[r]->() DELETE r")
-graph.run("MATCH (n:Name) DETACH DELETE n")
-graph.run("MATCH (n:Title) DETACH DELETE n")
+graph.run("MATCH (n:Artist) DETACH DELETE n")
+graph.run("MATCH (n:Film) DETACH DELETE n")
 
 with pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password) as conn:
     cursor = conn.cursor()
 
     # Titles
     exportedCount = 0
-    cursor.execute("SELECT COUNT(1) FROM tTitles")
+    cursor.execute("SELECT COUNT(1) FROM TFilm")
     totalCount = cursor.fetchval()
-    cursor.execute("SELECT tconst, primaryTitle, startYear FROM tTitles")
+    cursor.execute("SELECT idFilm, primaryTitle, startYear FROM TFilm")
     while True:
         importData = []
         rows = cursor.fetchmany(BATCH_SIZE)
@@ -57,18 +57,18 @@ with pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE=
 
     try:
         print("Indexing Title nodes...")
-        graph.run("CREATE INDEX ON :Title(tconst)")
+        graph.run("CREATE INDEX ON :Film(idFilm)")
         print("Indexing Name nodes...")
-        graph.run("CREATE INDEX ON :Name(nconst)")
+        graph.run("CREATE INDEX ON :Artist(idArtist)")
     except Exception as error:
         print(error)
 
 
     # Relationships
     exportedCount = 0
-    cursor.execute("SELECT COUNT(1) FROM tPrincipals")
+    cursor.execute("SELECT COUNT(1) FROM tJob")
     totalCount = cursor.fetchval()
-    cursor.execute(f"SELECT nconst, category, tconst FROM tPrincipals")
+    cursor.execute(f"SELECT idArtist, category, idFilm FROM tJob")
     while True:
         importData = { "acted in": [], "directed": [], "produced": [], "composed": [] }
         rows = cursor.fetchmany(BATCH_SIZE)
