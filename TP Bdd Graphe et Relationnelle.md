@@ -17,11 +17,17 @@ Pour ce TP, il est fortement conseillé de:
 Les enseignants vous fourniront les informations de connexion à trois bases de données (Azure SQL Database, Neo4j et Cosmos DB).
 
 1. Si possible, installez [Azure Data Studio](https://docs.microsoft.com/fr-fr/sql/azure-data-studio/download-azure-data-studio?view=sql-server-ver15) pour faciliter la création de vos requêtes SQL. Si ce n'est pas possible, vous pourrez également effectuer les requêtes depuis votre navigateur.
-2. Connectez-vous au [portail Azure](https://portal.azure.com), et ouvrez la page correspondant la base de données SQL `tpbdd-movies-sql`
-3. Un environnement de développement a été préparé pour la partie codage, vous pouvez vous y connecter en SSH en utilisant les information de connexion fournies par les enseignants. Vous pouvez éditer les fichiers directement avec `vim` ou `nano` mais nous vous conseillons fortement d'utiliser [Visual Studio Code](https://code.visualstudio.com/) et son extension [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) pour éditer le code distant avec un maximum de confort.
+2. Connectez-vous au [portail Azure](https://portal.azure.com), et ouvrez la page correspondant la base de données SQL `tpbdd-movies-db`
+3. Dans la barre d'outil, cliquez sur *Set server firewall*
+    ![image](https://user-images.githubusercontent.com/22498922/211506443-ddbbace3-c6ee-488f-9385-0a1ed2805851.png)
+4. Cliquez sur le bouton *Add your client IPv4 address (x.x.x.x)* puis sur *Save*
+    ![image](https://user-images.githubusercontent.com/22498922/211505129-a9bf661b-ab99-4f0d-a2f5-5eaf300d198f.png)
+5. Un environnement de développement a été préparé pour la partie codage, vous pouvez vous y connecter en SSH en utilisant les information de connexion fournies par les enseignants. Vous pouvez éditer les fichiers directement avec `vim` ou `nano` mais nous vous conseillons fortement d'utiliser [Visual Studio Code](https://code.visualstudio.com/) et son extension [Remote Development](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack) pour éditer le code distant avec un maximum de confort.
 
 # Partie 1 - Base de données relationnelle - Azure SQL Database
 Ecrire les requêtes ci-dessous, et les expliquer en deux ou trois phrases maximum en français ou en anglais.
+
+## Requêtes SQL
 
 **Exercice 0**: Décrivez les tables et les attributs.
 
