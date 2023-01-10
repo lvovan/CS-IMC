@@ -58,8 +58,15 @@ Neo4j est une base de données graphe. Les données sont représentées par des 
 Pour la suite du TP, nous aurons besoin de créer une base de données Neo4j en mode "bac à sable" (Sandbox). Pour cela:
 1. Créez une base de données  [Neo4j Sandbox](https://neo4j.com/sandbox/). Utilisez les informations que vous souhaitez pour la création de compte.
 2. Parmi les templates, créez une base vierge (*Blank sandbox*)
-3. Dans le portail Neo4j (un lien vous a été envoyé par email), dépliez la ligne correspondant à votre sandbox puis allez dans l'onglet **Connection details** pour noter ces informations de connexion qui vous seront utiles ultérieurement.
+3. Dans le portail Neo4j (un lien vous a été envoyé par email), dépliez la ligne correspondant à votre sandbox puis allez dans l'onglet **Connection details** pour noter ces informations de connexion
 ![image](https://user-images.githubusercontent.com/22498922/147907013-ae0f0d32-7982-464b-969a-576646407c9c.png)
+4. Créez un fichier `~/.bashrc` qui définit les variables de connexion
+    ```sh
+    export TPBDD_NEO4J_SERVER=
+    export TPBDD_NEO4J_USER=
+    export TPBDD_NEO4J_PASSWORD=
+    ```
+    Définissez ces variables d'environnement dans votre shell ou redémarrez-le.
 
 ## Cypher 
 Le langage de requêtage utilisé par Neo4j est [Cypher](https://neo4j.com/developer/cypher/). Vous trouverez sa [documentation officielle](https://neo4j.com/docs/cypher-refcard/current/) sur le site de Neo4j.
