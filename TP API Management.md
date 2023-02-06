@@ -5,10 +5,10 @@ Dans ce TP nous utiliserons [Azure API Management](https://azure.microsoft.com/f
 
 > ⚠️ Lancez dès maintenant la création d'une ressource **API Management en mode développeur** depuis le portail Azure, car la création peut prendre plusieurs minutes.
 
-## 1. Test de l'API suivante, hébergée en tant que [Lambda](https://docs.aws.amazon.com/fr_fr/lambda/latest/dg/welcome.html) sur AWS
+## 1. Test de l'API 'Fibonacci', hébergée en tant que serverless [Lambda](https://docs.aws.amazon.com/fr_fr/lambda/latest/dg/welcome.html) sur AWS
  - API calculant la [suite de Fibonacci](https://wvxyl5z85e.execute-api.eu-west-3.amazonaws.com/default/imc-fibo?value=20)
 
-## 2. Implémentation votre propre API serverless sur Azure
+## 2. Implémentation votre propre API 'Lucas' serverless sur Azure
  - Implémentez une Azure Function implémentant le calcul de la [suite de Lucas](https://fr.wikipedia.org/wiki/Suite_de_Lucas), avec le langage de votre choix. Dans un premier temps, codez directement dans le navigateur.
 
 ## 3. Intégration à Azure API Management et transformation de la sortie
