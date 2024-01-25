@@ -23,17 +23,24 @@ try:
 	graph = Graph(neo4j_server, auth=(neo4j_user, neo4j_password))
 	graph.run("MATCH (n:Test) RETURN n")
 	print("✔️")
-	      
+except Exception as error:
+	print(error)
+
+print()
+try:
 	print("Test de connexion avec pyodbc...", end="", flush=True)
 	with pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password) as conn:
 		cursor = conn.cursor()
 		cursor.execute("SELECT 1")
 		print("✔️")
 	
-	print("La configuration est valide.")
-	print("L'énoncé du TP est disponible sur: https://github.com/lvovan/CS-IMC/blob/main/TP%20Bdd%20Graphe%20et%20Relationnelle.md")
 except Exception as error:
 	print(error)
-	print("Note: Si vous avez un timeout, réessayez dans quelques secondes pour donner à la base de données le temps de se 'réveiller'.")
+	print("Causes possibles:")
+	print("  - L'IP de votre container n'a pas été ajoutée aux exceptions de firewall de la base SQL (voir énoncé du TP, section Prérequis)")
+	print("  - Si vous avez un timeout, réessayez dans quelques secondes pour donner à la base de données le temps de se 'réveiller'.")
+
+print("La configuration est valide.")
+print("L'énoncé du TP est disponible sur: https://github.com/lvovan/CS-IMC/blob/main/TP%20Bdd%20Graphe%20et%20Relationnelle.md")
 
 print()
