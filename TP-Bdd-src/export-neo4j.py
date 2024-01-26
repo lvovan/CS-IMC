@@ -8,7 +8,7 @@ server = os.environ["TPBDD_SERVER"]
 database = os.environ["TPBDD_DB"]
 username = os.environ["TPBDD_USERNAME"]
 password = os.environ["TPBDD_PASSWORD"]
-driver= '{ODBC Driver 17 for SQL Server}'
+driver= '{ODBC Driver 18 for SQL Server}'
 
 neo4j_server = os.environ["TPBDD_NEO4J_SERVER"]
 neo4j_user = os.environ["TPBDD_NEO4J_USER"]
