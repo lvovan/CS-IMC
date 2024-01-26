@@ -60,13 +60,13 @@ Pour la suite du TP, nous aurons besoin de créer une base de données Neo4j en 
 2. Parmi les templates, créez une base vierge (*Blank sandbox*)
 3. Dans le portail Neo4j (un lien vous a été envoyé par email), dépliez la ligne correspondant à votre sandbox puis allez dans l'onglet **Connection details** pour noter ces informations de connexion
 ![image](https://user-images.githubusercontent.com/22498922/147907013-ae0f0d32-7982-464b-969a-576646407c9c.png)
-4. Ajoutez à la fin du fichier `~/.bashrc` les variables d'environnement nécessaires à la connexion à votre base Neo4j
+4. ⚠️ Modifiez la fin du fichier `~/.bashrc` les variables d'environnement nécessaires à la connexion à votre base Neo4j
     ```sh
     export TPBDD_NEO4J_SERVER=
     export TPBDD_NEO4J_USER=
     export TPBDD_NEO4J_PASSWORD=
     ```
-    Définissez ces variables d'environnement dans votre shell ou redémarrez-le.
+    Définissez ces variables d'environnement dans votre shell ou redémarrez-le - sans quoi vous pointerez vers la base de données de test qui sera supprimée 1j après le TP.
 
 ## Cypher 
 Le langage de requêtage utilisé par Neo4j est [Cypher](https://neo4j.com/developer/cypher/). Vous trouverez sa [documentation officielle](https://neo4j.com/docs/cypher-refcard/current/) sur le site de Neo4j.
