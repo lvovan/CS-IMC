@@ -42,6 +42,6 @@ Il se peut qu'une erreur apparaisse concernant l'ACR (Azure Container Registry) 
 
 ## 5. Déploiement depuis GitHub
 1. Retourner sur votre repo [GitHub](https://www.github.com)
-2. Créer votre workflow à partir de cette [action](https://github.com/Azure/container-apps-deploy-action?tab=readme-ov-file#minimal---build-application-image-for-container-app) qui sera déclenchée lors d'un *push* et qui effectuera le build et le déploiement de l'application dans la Container App créée dans la section 4.
+2. Créer votre workflow à partir de cette [action](https://github.com/Azure/container-apps-deploy-action?tab=readme-ov-file#minimal---build-application-image-for-container-app) qui sera déclenchée lors d'un *push* et qui effectuera le build et le déploiement de l'application dans la Container App créée dans la section 4. Attention au [format attendu](https://github.com/marketplace/actions/azure-login#creds) pour le secret des credentials!
 3. Modifier votre application pour qu'elle accepte un paramètre dans sa route (ex: `@app.route('/hello/<name>', methods=['GET'])`)
 4. Bravo!
