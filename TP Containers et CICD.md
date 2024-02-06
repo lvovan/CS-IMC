@@ -25,7 +25,7 @@ Vous allez maintenant créer une application Flask exposant un web service en Py
 ## 3. Containerisation
 Vous allez maintenant containeriser votre application avec Docker.
 
-Le fichier `Dockerfile` choisi vous permettra ensuite de déployer l'application sur [Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/overview), un service PaaS d'hébergement applicatif.
+Le fichier `Dockerfile` choisi vous permettra ensuite de déployer l'application sur [Azure Container Apps](https://learn.microsoft.com/en-us/azure/container-apps/overview), un service PaaS d'hébergement applicatif. Vous pouvez utiliser la base image `3.8-slim-buster` afin de réduire les temps de téléchargement.
 
 1. Containeriser l'application en s'appuyant sur [cette documentation](https://learn.microsoft.com/en-us/azure/developer/python/tutorial-containerize-simple-web-app?tabs=web-app-flask#add-dockerfile-and-dockerignore-files).
 2. Tester l'application dockerisée en local
