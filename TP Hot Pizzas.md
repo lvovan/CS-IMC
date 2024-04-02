@@ -1,6 +1,7 @@
 # Travaux Pratiques Hot Pizzas
-## *My customers deserve hot pizzas!!!*
-![image](https://user-images.githubusercontent.com/20154628/145547104-43a2d9b7-1754-409b-8bbf-2060ee0f127e.png)  
+## *Our customers deserve hot pizzas!!!*
+
+![image](https://github.com/lvovan/CS-IMC/assets/22498922/11b6becd-bc9f-437c-85b2-c3c0eb6244ea)
 
 ![image](https://user-images.githubusercontent.com/20154628/145550769-ad5c56e9-bbc5-459f-9ed4-d00260ec4125.png)  
 
