@@ -29,7 +29,7 @@ Exemple d'évènement au format JSON:
 <br /><br />
 On doit arriver à quelque chose comme ça :
 <br />
-![image](https://user-images.githubusercontent.com/20154628/145559457-300e909f-ac61-47af-9f91-a866d3191426.png)
+![image](https://github.com/user-attachments/assets/e980eb22-7c0c-4976-9b97-f22815ef8f99)
 <br />
 
 ## 2- Création du Consommateur d'évènements
