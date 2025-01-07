@@ -31,6 +31,8 @@ On doit arriver à quelque chose comme ça :
 <br />
 ![image](https://github.com/user-attachments/assets/e980eb22-7c0c-4976-9b97-f22815ef8f99)
 <br />
+![image](https://github.com/user-attachments/assets/43b93ba4-831b-4893-bdc1-3c7868a6d234)
+<br />
 
 ## 2- Création du Consommateur d'évènements
 
