@@ -16,6 +16,7 @@
 3. Commencer le workflow Logic Apps avec un *Step* de type *Recurrence* (définir la fréquence)
 4. Utiliser un Step de type *Send Event*
 5. Utiliser la fonction random (*rand*) dans le JSON pour faire varier les valeurs...
+6. Pour vérifier que les messages ont bien été receptionnés par l'Event Hub, depuis le portail web sélectionner le namespace cible avec l'outil Data Explorerdepuis 
 <br />
 
 Exemple d'évènement au format JSON:  
